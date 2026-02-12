@@ -8,6 +8,13 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: '/RenovationLogo.png'
+        }
+      ],
       script: [
         {
           src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9341226393355638',

@@ -34,13 +34,11 @@ onBeforeUnmount(() => {
       <!-- Desktop sidebar -->
       <aside class="sidebar">
         <SideNav />
-        <!-- ✅ Vertical Sidebar Ad -->
         <AdSlot slot="sidebar" />
       </aside>
 
       <!-- Main content -->
       <main class="content">
-        <!-- ✅ Horizontal Top Ad -->
         <AdSlot slot="top" />
 
         <div class="container readable">
@@ -48,6 +46,13 @@ onBeforeUnmount(() => {
         </div>
       </main>
     </div>
+
+    <!-- ✅ Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <NuxtLink to="/privacy-policy">Privacy Policy</NuxtLink>
+      </div>
+    </footer>
 
     <!-- Vanta background -->
     <div v-show="vantaEnabled" id="vanta-bg" />
@@ -60,6 +65,8 @@ onBeforeUnmount(() => {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Vanta */
@@ -75,6 +82,7 @@ onBeforeUnmount(() => {
   grid-template-columns: 260px 1fr;
   min-height: 100vh;
   width: 100%;
+  flex: 1;
 }
 
 /* Sidebar (desktop only) */
@@ -98,6 +106,31 @@ onBeforeUnmount(() => {
   min-width: 0;
 }
 
+/* ✅ Footer Styling */
+.site-footer {
+  margin-top: 40px;
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
 /* Floating mobile button */
 .mobile-fab {
   display: none;
@@ -115,10 +148,8 @@ onBeforeUnmount(() => {
   padding: 6px 10px;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.25);
-
   background: rgba(0,0,0,0.45);
   backdrop-filter: blur(8px);
-
   color: white;
   font-size: 13px;
   cursor: pointer;
@@ -147,12 +178,21 @@ onBeforeUnmount(() => {
     position: fixed;
     z-index: 50;
   }
+
+  .site-footer {
+    padding: 20px 12px;
+    font-size: 13px;
+  }
 }
 
 /* EXTRA SAFETY for very narrow devices */
 @media (max-width: 380px) {
   .content {
     padding: 8px;
+  }
+
+  .site-footer {
+    font-size: 12px;
   }
 }
 </style>
