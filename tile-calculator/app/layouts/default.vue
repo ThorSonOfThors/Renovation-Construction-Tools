@@ -34,11 +34,13 @@ onBeforeUnmount(() => {
       <!-- Desktop sidebar -->
       <aside class="sidebar">
         <SideNav />
+        <!-- ✅ Vertical Sidebar Ad -->
         <AdSlot slot="sidebar" />
       </aside>
 
       <!-- Main content -->
       <main class="content">
+        <!-- ✅ Horizontal Top Ad -->
         <AdSlot slot="top" />
 
         <div class="container readable">

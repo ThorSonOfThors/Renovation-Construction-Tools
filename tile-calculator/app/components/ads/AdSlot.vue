@@ -1,13 +1,25 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 
-defineProps<{
+const props = defineProps<{
   slot: 'top' | 'sidebar'
 }>()
 
+// Map layout → correct AdSense slot ID
+const adSlotId = computed(() => {
+  return props.slot === 'sidebar'
+    ? '1979927234'   // Vertical sidebar ad
+    : '2937785682'   // Horizontal top ad
+})
+
 onMounted(() => {
-  // Placeholder for AdSense / provider init
-  // Safe: runs only on client
+  try {
+    // Required for SPA navigation (Nuxt client-side routing)
+    // @ts-ignore
+    (window.adsbygoogle = window.adsbygoogle || []).push({})
+  } catch (e) {
+    console.error('AdSense error:', e)
+  }
 })
 </script>
 
@@ -18,10 +30,14 @@ onMounted(() => {
       :class="`ad-${slot}`"
       aria-label="Advertisement"
     >
-      <!-- Replace with provider code later -->
-      <div class="ad-placeholder">
-        Advertisement
-      </div>
+      <ins
+        class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9341226393355638"
+        :data-ad-slot="adSlotId"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
     </div>
   </ClientOnly>
 </template>
@@ -73,4 +89,7 @@ onMounted(() => {
     display: none;
   }
 }
+
+
+
 </style>
