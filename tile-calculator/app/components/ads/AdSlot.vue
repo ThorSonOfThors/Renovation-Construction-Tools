@@ -13,14 +13,23 @@ const adSlotId = computed(() => {
 })
 
 onMounted(() => {
-  try {
-    // Required for SPA navigation (Nuxt client-side routing)
-    // @ts-ignore
-    (window.adsbygoogle = window.adsbygoogle || []).push({})
-  } catch (e) {
-    console.error('AdSense error:', e)
+  const ins = document.querySelector(
+    `.ad-${props.slot} .adsbygoogle`
+  ) as HTMLElement | null
+
+  if (!ins) return
+
+  // Only initialize if not already rendered
+  if (!ins.getAttribute('data-adsbygoogle-status')) {
+    try {
+      // @ts-ignore
+      (window.adsbygoogle = window.adsbygoogle || []).push({})
+    } catch (e) {
+      console.error('AdSense error:', e)
+    }
   }
 })
+
 </script>
 
 <template>
