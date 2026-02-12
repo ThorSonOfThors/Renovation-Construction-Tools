@@ -1,0 +1,166 @@
+/* app/assets/css/base.css */
+
+/* Basic reset */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.45;
+}
+
+/* Layout */
+:root {
+  --sidebar-width: 260px;
+  --content-max: 980px;
+  --radius: 14px;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 16px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+}
+
+.content {
+  padding: 24px 16px 48px;
+}
+
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+/* Cards */
+.card {
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius);
+  padding: 16px;
+  backdrop-filter: blur(10px);
+}
+
+/* Links */
+a { color: inherit; }
+.nav-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+.nav-link:hover { background: rgba(104, 61, 61, 0.08); }
+.nav-link.active { background: rgba(255,255,255,0.14); font-weight: 700; }
+
+/* Make text readable over animated background */
+.readable {
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+/* Mobile: sidebar becomes top bar */
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  .sidebar {
+    height: auto;
+    position: relative;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+}
+
+
+/* Mobile nav toggle */
+/* Hide desktop sidebar on mobile */
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+/* Mobile top bar */
+.mobile-topbar {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-title {
+  font-weight: 700;
+  color: white;
+}
+
+/* Hamburger */
+.hamburger {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mobile nav overlay */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(0,0,0,0.55);
+}
+
+/* Dropdown panel */
+.mobile-nav {
+  background: rgba(20,20,20,0.95);
+  padding: 16px;
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.mobile-nav a:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Enable mobile UI */
+@media (max-width: 900px) {
+  .mobile-topbar {
+    display: flex;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .sidebar-ad {
+    display: none;
+  }
+}
+
+.sidebar-ad {
+  min-height: 250px;
+}
+
+
+
+
