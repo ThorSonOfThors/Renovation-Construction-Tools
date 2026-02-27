@@ -47,10 +47,19 @@ onBeforeUnmount(() => {
       </main>
     </div>
 
-    <!-- ✅ Footer -->
+    <!--  Footer -->
     <footer class="site-footer">
       <div class="footer-inner">
+        <NuxtLink to="/about">About</NuxtLink>
+        <span class="separator">|</span>
+
+        <NuxtLink to="/contact">Contact</NuxtLink>
+        <span class="separator">|</span>
+
         <NuxtLink to="/privacy-policy">Privacy Policy</NuxtLink>
+        <span class="separator">|</span>
+
+        <NuxtLink to="/terms-of-service">Terms of Service</NuxtLink>
       </div>
     </footer>
 
@@ -194,5 +203,27 @@ onBeforeUnmount(() => {
   .site-footer {
     font-size: 12px;
   }
+}
+
+.site-footer {
+  margin-top: 60px;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  font-size: 14px;
+}
+
+.footer-inner a {
+  color: #000000;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+.footer-inner a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  color: #aaa;
 }
 </style>

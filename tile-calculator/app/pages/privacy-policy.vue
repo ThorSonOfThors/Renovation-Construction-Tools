@@ -44,11 +44,14 @@
 
 <style scoped>
 .legal-page {
+  margin-right: 20px;
+  padding-right: 20px;
   padding: 40px 0;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.2);
   color: white;
   background-color: rgb(0, 0, 0);
 }
+
 
 </style>
